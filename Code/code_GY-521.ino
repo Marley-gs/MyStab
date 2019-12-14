@@ -2,7 +2,7 @@
 
 
 const int MPU_addr=0x68;  //adresse I2C du composant, si AD0=5V(HIGH) elle devient 0x69
-float Acc_X, Acc_Y, Acc_Z, Gy_X, Gy_Y, Gy_Z, 
+float Acc_X, Acc_Y, Acc_Z, Gy_X, Gy_Y, Gy_Z; 
 float angle_x, angle_y, angle_z;  //variables qui stockent les 3 accélérations
 
 
@@ -49,4 +49,5 @@ void loop() {
 
   Serial.print("angle_x= ");Serial.print(angle_x);
   Serial.print(" |angle_y= ");Serial.println(angle_y);
+}
   
