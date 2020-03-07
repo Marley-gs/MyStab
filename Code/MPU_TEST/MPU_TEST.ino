@@ -14,6 +14,7 @@ uint8_t Accel_range;
 uint8_t Gyro_range;
 float angle=0;
 
+Servo servoY;
 Servo servoX;
 float val1;
 
@@ -35,11 +36,15 @@ void setup() {
 
   servoX.attach(10);
   servoX.write(90);
+  servoY.write(9);
+  servoY.write(90);
+           
 }
 
 void loop() {
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
   angle=0.98*(angle+float(gy)*0.01/131) + 0.02*atan2((double)ax,(double)az)*180/PI;
+  //angle2 = 0.98*(angle2+float(gx)*0.01/131) + 0.02*atan2((double)ay,(double)az)*180/PI;
   Serial.println(angle); 
   delay(10);
 
@@ -49,6 +54,8 @@ void loop() {
   
   //Serial.println(val2);
   
-  servoX.write(angle);
+  servoY.write(angle);
+  //servoX.write(angle2);
+  
   //servoY.write(val2);
 }
